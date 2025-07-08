@@ -1,33 +1,38 @@
 import { createContext, useContext, useState } from "react";
 
+// สมมติคุณมีรูป 2 รูปใน assets เช่น OnpreeyaLight.jpg กับ OnpreeyaDark.jpg
+const lightProfile = require("../../assets/images/OnpreeyaLight.jpg");
+const darkProfile = require("../../assets/images/OnpreeyaDark.png");
+
 const ThemeContext = createContext();
 
 export const useTheme = () => {
-  const constext = useContext(ThemeContext);
-  if (!constext) {
+  const context = useContext(ThemeContext);
+  if (!context) {
     throw new Error("useTheme must be used within a ThemeProvider");
   }
-  return constext;
+  return context;
 };
 
 export const ThemeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const toggleTheme = () => {
-    setIsDarkMode((prevMode) => !prevMode);
-  };
+  const toggleTheme = () => setIsDarkMode((prev) => !prev);
 
   const theme = {
     isDarkMode,
     toggleTheme,
+    profileImage: isDarkMode ? darkProfile : lightProfile,
     color: {
-      background: isDarkMode ? "#000" : "#fff",
-      text: isDarkMode ? "#fff" : "#000",
-      textSecondary: isDarkMode ? "#ccc" : "#333",
-      surface: isDarkMode ? "#121212" : "#f5f5f5",
-      primary: isDarkMode ? "#bb86fc" : "#6200ee",
-      secoundary: isDarkMode ? "#03dac6" : "#03dac5",
-      error: isDarkMode ? "#cf6679" : "#b00020",
+      background: isDarkMode ? "#0A0F2F" : "#fff",
+      surface: isDarkMode ? "#121A4A" : "#f5f5f5",
+      primary: isDarkMode ? "#00FFF7" : "#6200ee",
+      secondary: isDarkMode ? "#00B9B0" : "#03dac5",
+      text: isDarkMode ? "#00FFF7" : "#000",
+      textSecondary: isDarkMode ? "#66FFF6" : "#333",
+      error: isDarkMode ? "#FF3B3B" : "#b00020",
+      shadow: isDarkMode ? "rgba(0, 255, 247, 0.6)" : "rgba(0,0,0,0.1)",
     },
+    statusBarStyle: isDarkMode ? "light-content" : "dark-content",
   };
 
   return (
