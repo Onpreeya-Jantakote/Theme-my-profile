@@ -1,18 +1,36 @@
 import { Stack } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native";
+import ThemeToggle from "./components/ThemeToggle";
+import { ThemeProvider, useTheme } from "./context/ThemeContext";
 
-export default function Layout() {
+function StackLayout() {
+  const { color } = useTheme();
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: color.background,
+        },
+        headerTintColor: color.text,
+        headerTitleStyle: {
+          color: color.text,
+        },
+      }}
+    >
       <Stack.Screen
         name="index"
-        options={{
-          headerTransparent: true,
-          headerTitle: "",
-          headerTitleAlign: "center",
-        }}
+        options={{ title: "Profile", headerRight: () => <ThemeToggle /> }}
+      />
+      <Stack.Screen
+        name="about"
+        options={{ title: "About us", headerRight: () => <ThemeToggle /> }}
       />
     </Stack>
+  );
+}
+export default function Layout() {
+  return (
+    <ThemeProvider>
+      <StackLayout />
+    </ThemeProvider>
   );
 }

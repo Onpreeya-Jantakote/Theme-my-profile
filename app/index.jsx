@@ -2,20 +2,13 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from "rea
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useState } from "react";
-import SkillsTab from "./skillTab";
-import ProjectsTab from "./projectTab";
-import StepCircles from "./studentId";
+import { Link } from "expo-router";
 
 const Home = () => {
     const insets = useSafeAreaInsets();
-    const [activeTab, setActiveTab] = useState("project");
 
     return (
         <ScrollView style={[styles.container, { paddingTop: insets.top }]}>
-            <View style={styles.topBackground}>
-                <View style={styles.header}>
-                    <Text style={styles.headerTitle}>My Profile</Text>
-                </View>
 
                 <View style={styles.profileSection}>
                     <Image
@@ -23,12 +16,14 @@ const Home = () => {
                         style={styles.profileImage}
                     />
                     <Text style={styles.name}>Onpreeya Jantakote</Text>
-                    <StepCircles />
                     <Text style={styles.detailDes}>Computer Science and Information</Text>
                     <View style={styles.detailRow}>
                         <Ionicons name="location-sharp" size={16} color="#6b7280" style={{ marginRight: 6 }} />
                         <Text style={styles.detailDes}>KhonKaen University</Text>
                     </View>
+                    <Link href={"/about"} style={styles.button}>
+                        <Text>About Us</Text>
+                    </Link>
                 </View>
 
                 <View style={styles.buttonGroup}>
@@ -36,23 +31,7 @@ const Home = () => {
                         <Text style={styles.studentIdText}>onpreeya.ja@kkumail.com</Text>
                     </TouchableOpacity>
                 </View>
-            </View>
-
-            <View>
-                <View style={styles.sectionTabs}>
-                    <TouchableOpacity onPress={() => setActiveTab("project")}>
-                        <Text style={activeTab === "project" ? styles.activeTab : styles.inactiveTab}>PROJECT</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => setActiveTab("skills")}>
-                        <Text style={activeTab === "skills" ? styles.activeTab : styles.inactiveTab}>SKILLS</Text>
-                    </TouchableOpacity>
-                </View>
-
-                {activeTab === "project" && <ProjectsTab />}
-                {activeTab === "skills" && <SkillsTab />}
-            </View>
         </ScrollView>
-
     );
 };
 
@@ -96,7 +75,6 @@ const styles = StyleSheet.create({
     detailDes: {
         fontSize: 14,
         color: "#6b7280",
-
     },
     buttonGroup: {
         flexDirection: "row",
@@ -114,30 +92,12 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
     },
-    sectionTabs: {
-        flexDirection: "row",
-        justifyContent: "space-around",
-        marginTop: 20,
-    },
-    activeTab: {
-        color: "#4f46e5",
-        fontWeight: "bold",
-        fontSize: 16,
-        borderBottomWidth: 2,
-        borderBottomColor: "#4f46e5",
-        paddingBottom: 5,
-    },
     topBackground: {
         backgroundColor: "white",
         borderBottomLeftRadius: 30,
         borderBottomRightRadius: 30,
         paddingBottom: 10,
     },
-    inactiveTab: {
-        color: "#9ca3af",
-        fontSize: 16,
-    },
-
 });
 
 export default Home;
