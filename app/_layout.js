@@ -22,7 +22,7 @@ function StackLayout() {
       />
       <Stack.Screen
         name="about"
-        options={{ title: "About us", headerRight: () => <ThemeToggle /> }}
+        options={{ title: "About", headerRight: () => <ThemeToggle /> }}
       />
     </Stack>
   );
