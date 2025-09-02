@@ -39,25 +39,43 @@ This project uses [Classroom API](https://github.com/tanapattara-classroom/class
 ### Run with Docker
 
 1. Clone the repository:
-git clone https://github.com/tanapattara-classroom/classroom-api.git
-cd classroom-api
+
+```bash
+- git clone https://github.com/tanapattara-classroom/classroom-api.git
+- cd classroom-api
+```
 
 2. Build and run the Docker container:
-docker-compose up --build
+
+```bash
+- docker-compose up --build
+```
 
 3. The API will be available at:
-http://localhost:3000/api
+
+```bash
+- http://localhost:3000/api
+```
 
 ### React Native Installation
 1. Clone this repository:
-git clone https://github.com/Onpreeya-Jantakote/Theme-my-profile.git
-cd Theme-my-profile
 
-2. Install dependencies:
-npm install
+```bash
+- git clone https://github.com/Onpreeya-Jantakote/Theme-my-profile.git
+- cd Theme-my-profile
+```
 
-3. Start the app on web:
-npx expo start --web
+3. Install dependencies:
+
+```bash
+- npm install
+```
+
+4. Start the app on web:
+
+```bash
+- npx expo start --web
 
 Or on Android/iOS simulator:
-npx expo start
+- npx expo start
+```
