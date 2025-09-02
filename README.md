@@ -61,6 +61,3 @@ npx expo start --web
 
 Or on Android/iOS simulator:
 npx expo start
-
-git clone https://github.com/tanapattara-classroom/classroom-api.git
-cd classroom-api
