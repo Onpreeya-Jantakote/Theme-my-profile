@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-// สมมติคุณมีรูป 2 รูปใน assets เช่น OnpreeyaLight.jpg กับ OnpreeyaDark.jpg
+
 const lightProfile = require("../../assets/images/OnpreeyaLight.jpg");
 const darkProfile = require("../../assets/images/OnpreeyaDark.png");
 
