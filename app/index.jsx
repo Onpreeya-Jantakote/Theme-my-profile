@@ -3,7 +3,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { FontAwesome } from "@expo/vector-icons";
 import { useTheme } from "./context/ThemeContext";
-import ThemeToggle from "./components/ThemeToggle";
 import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
@@ -19,6 +18,7 @@ const Home = () => {
       />
 
       <ScrollView contentContainerStyle={{ paddingBottom: 30 }}>
+        {/* ===== PROFILE CARD ===== */}
         <View style={[styles.card, { backgroundColor: color.surface, shadowColor: color.shadow }]}>
           <Text style={[styles.studentId, { color: color.textSecondary }]}>
             ID: 653450107-5
@@ -51,6 +51,7 @@ const Home = () => {
               onpreeya.ja@kkumail.com
             </Text>
           </View>
+
           <View style={[styles.divider, { backgroundColor: color.divider || "#ccc" }]} />
 
           <View style={styles.socialRow}>
@@ -67,7 +68,30 @@ const Home = () => {
               <FontAwesome name="instagram" size={20} color={color.text} />
             </TouchableOpacity>
           </View>
+        </View>
 
+        {/* ===== ACTION BUTTONS SECTION ===== */}
+        <View style={styles.actionButtonsContainer}>
+          <TouchableOpacity
+            style={[styles.actionButton, { backgroundColor: color.primary }]}
+            onPress={() => navigation.navigate("book")}
+          >
+            <Text style={styles.actionButtonText}>Book</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.actionButton, { backgroundColor: color.primary + "aa" }]}
+            onPress={() => navigation.navigate("signin")}
+          >
+            <Text style={styles.actionButtonText}>Sign In</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.actionButton, { backgroundColor: color.primary + "aa" }]}
+            onPress={() => navigation.navigate("signup")}
+          >
+            <Text style={styles.actionButtonText}>Sign Up</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
@@ -174,6 +198,29 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     marginBottom: 20,
   },
+  actionButtonsContainer: {
+    marginTop: 30,
+    marginHorizontal: 20,
+    flexDirection: "column",
+    gap: 12,
+    alignItems: "stretch",
+  },
+  actionButton: {
+    paddingVertical: 14,
+    borderRadius: 30,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    elevation: 4,
+  },
+  actionButtonText: {
+    color: "#fff",
+    fontWeight: "600",
+    fontSize: 16,
+  },
+
 
 });
 
